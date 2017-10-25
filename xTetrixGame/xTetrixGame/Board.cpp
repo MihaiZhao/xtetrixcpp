@@ -42,7 +42,7 @@ void Board::initBoard()
 
 		if (m_row >= maxRows+1 || m_column >= maxColumns+1 || m_row < minRows-1 || m_column <= minColumns-1)
 		{
-			std::cout << "\nSorry, but your numbers are not valid ( minim : "<< minRows + 1<< " and max : " << maxRows - 1 << "). Please insert again.\n\n";
+			std::cout << "\nSorry, but your numbers are not valid ( minim : "<< minRows << " and max : " << maxRows << "). Please insert again.\n\n";
 			system("pause");
 			system("cls");
 		}
