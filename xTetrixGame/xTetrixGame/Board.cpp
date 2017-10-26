@@ -20,19 +20,19 @@ void Board::initBoard()
 	// ===== Delete Previous Screen ======
 	system("cls");
 
-	// ===== Board Initilization Settigs ======
-	int const maxRows = 100;
-	int const maxColumns = 100;
-	int const minRows = 10;
-	int const minColumns = 10;
+	// ===== Board Initialization Settings ======
+	int const maxRows = 100;		// Maximum numbers of rows
+	int const maxColumns = 100;		// Maximum numbers of columns
+	int const minRows = 10;			// Minimum numbers of rows
+	int const minColumns = 10;		// Minimum numbers of columns
 
 	char mBoard[maxRows][maxColumns];
 
 	// ===== User Board Customization ======
-	int  m_row;
-	int  m_column;
+	int  m_row;						// User input for rows
+	int  m_column;					// User input for columns
 
-	bool passedNumbers = false;
+	bool passedNumbers = false;		// Variable that checks
 
 	// Check if numbers are valid
 	while (!passedNumbers)
@@ -54,9 +54,10 @@ void Board::initBoard()
 	system("cls");
 
 	// ===== Create the Board Limits ========
-	int const m_boardLimitRight = 0;
-	int const m_boardLimitLeft = m_column - 1;
-	int const m_boardLimitBottom = m_row - 1;
+	int m_boardLimitRight = 0;
+	int m_boardLimitLeft = m_column - 1;
+	int m_boardLimitBottom = m_row - 1;
+
 
 	// ===== Set the Board Limits ========
 	for (int row = 0; row < m_row; row++)
@@ -70,7 +71,6 @@ void Board::initBoard()
 			if (column != m_boardLimitRight && column != m_boardLimitLeft)		{ mBoard[row][column] = ' '; } // Set the blank spaces
 
 			if (row == m_boardLimitBottom)										{ mBoard[row][column] = '#'; } // Set the bottom border
-
 		}
 	}
 
