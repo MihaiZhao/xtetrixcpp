@@ -14,6 +14,7 @@ int main()
 
 	while (menu.getPlaying())
 	{
+		menu.setWindowFullScreen();
 		menu.mainMenu();
 	}
 	return 0;
