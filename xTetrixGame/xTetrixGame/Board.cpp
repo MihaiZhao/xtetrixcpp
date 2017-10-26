@@ -2,6 +2,7 @@
 
 #include "Board.h"
 #include <iostream>
+#include <map>
 
 
 // ======= Board =======
@@ -37,6 +38,7 @@ void Board::initBoard()
 	// Check if numbers are valid
 	while (!passedNumbers)
 	{
+
 		std::cout << "Please insert board height: "; std::cin >> m_row;
 		std::cout << "Please insert board length: "; std::cin >> m_column;
 
