@@ -24,7 +24,8 @@ Menu::~Menu()
 // Functions
 void Menu::setWindowFullScreen()
 {
-
+	HWND hwnd = GetConsoleWindow();
+	if (hwnd != NULL) { MoveWindow(hwnd, 0, 0, 1920, 1080, TRUE); }
 }
 
 void Menu::initGame()
