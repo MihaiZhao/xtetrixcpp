@@ -2,7 +2,6 @@
 
 #include "Board.h"
 #include <iostream>
-#include <map>
 
 
 // ======= Board =======
@@ -64,14 +63,14 @@ void Board::initBoard()
 	{
 		for (int column = 0; column < m_column; column++)
 		{
-			if (column == m_boardLimitRight)									mBoard[row][column] = '#';	// Set the right boarder
-			
-			if (column == m_boardLimitLeft)										mBoard[row][column] = '#';	// Set the left boarder
+			if (column == m_boardLimitRight)									{ mBoard[row][column] = '#'; } // Set the right border
 
-			if (row == m_boardLimitBottom)										mBoard[row][column] = '#';	// Set the bottom border
+			if (column == m_boardLimitLeft)										{ mBoard[row][column] = '#'; } // Set the left border
 
-			if (column != m_boardLimitRight && column != m_boardLimitLeft)		mBoard[row][column] = ' ';	// Set the blank spaces
-			
+			if (column != m_boardLimitRight && column != m_boardLimitLeft)		{ mBoard[row][column] = ' '; } // Set the blank spaces
+
+			if (row == m_boardLimitBottom)										{ mBoard[row][column] = '#'; } // Set the bottom border
+
 		}
 	}
 
