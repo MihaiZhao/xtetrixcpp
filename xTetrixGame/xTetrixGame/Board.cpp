@@ -37,8 +37,8 @@ void Board::initBoard()
 	// Check if numbers are valid
 	while (!passedNumbers)
 	{
-		std::cout << "Please insert number of rows: "; std::cin >> m_row;
-		std::cout << "Please insert number of columns: "; std::cin >> m_column;
+		std::cout << "Please insert board height: "; std::cin >> m_row;
+		std::cout << "Please insert board length: "; std::cin >> m_column;
 
 		if (m_row >= maxRows+1 || m_column >= maxColumns+1 || m_row < minRows-1 || m_column <= minColumns-1)
 		{
