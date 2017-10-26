@@ -64,25 +64,14 @@ void Board::initBoard()
 	{
 		for (int column = 0; column < m_column; column++)
 		{
-			if (column == m_boardLimitRight) mBoard[row][column] = '#';
+			if (column == m_boardLimitRight)									mBoard[row][column] = '#';	// Set the right boarder
 			
+			if (column == m_boardLimitLeft)										mBoard[row][column] = '#';	// Set the left boarder
 
-			if (column == m_boardLimitLeft)
-			{
-				mBoard[row][column] = '#';
-			} 
+			if (row == m_boardLimitBottom)										mBoard[row][column] = '#';	// Set the bottom border
 
-
-			if (column != m_boardLimitRight && column != m_boardLimitLeft )
-			{
-				mBoard[row][column] = ' ';
-			}
-
-			if (row == m_boardLimitBottom)
-			{
-				mBoard[row][column] = '#';
-			}
-
+			if (column != m_boardLimitRight && column != m_boardLimitLeft)		mBoard[row][column] = ' ';	// Set the blank spaces
+			
 		}
 	}
 
@@ -98,7 +87,7 @@ void Board::initBoard()
 	}
 
 	// ===== Show current Board Settings =====
-	std::cout << "\n\nRows: "<< m_row << " ; " << "Columns: " << m_column << "" << "\n\n";
+	std::cout << "\n\nHeight: "<< m_row << " ; " << "Length: " << m_column << "" << "\n\n";
 
 	// ====== Debugging ========
 	system("pause");
