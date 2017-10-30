@@ -104,3 +104,5 @@ void Board::setTheBoardLimits()
 
 
 }
+
+void Board::getShapesFromFiles() {}
