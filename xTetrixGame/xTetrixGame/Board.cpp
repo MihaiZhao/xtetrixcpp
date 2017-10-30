@@ -5,11 +5,20 @@
 
 
 // ======= Board =======
-
 Board::Board()
 {
-}
+	// Board Settings
 
+	this->mMinRows = 10;
+	this->mMinColumns = 10;
+	this->input_mColumnsFromUser;
+	this->input_mRowsFromUser;
+
+	this->mBoardLimitRight = 1;
+	this->pmBoardLimitLeft = &input_mColumnsFromUser;
+	this->pmBoardLimitBottom = &input_mRowsFromUser;
+
+}
 
 Board::~Board()
 {
@@ -17,67 +26,66 @@ Board::~Board()
 
 void Board::initBoard()
 {
-	// ===== Delete Previous Screen ======
 	system("cls");
 
-	// ===== Board Initialization Settings ======
-	int const maxRows = 100;		// Maximum numbers of rows
-	int const maxColumns = 100;		// Maximum numbers of columns
-	int const minRows = 10;			// Minimum numbers of rows
-	int const minColumns = 10;		// Minimum numbers of columns
+	getRowsAndColumnsFromUser();
 
-	char mBoard[maxRows][maxColumns];
+	setTheBoardLimits();
 
-	// ===== User Board Customization ======
-	int  m_row;						// User input for rows
-	int  m_column;					// User input for columns
+}
 
+void Board::getRowsAndColumnsFromUser()
+{
 	bool passedNumbers = false;		// Variable that checks
 
-	// Check if numbers are valid
+									// Check if numbers are valid
 	while (!passedNumbers)
 	{
 
-		std::cout << "Please insert board height: "; std::cin >> m_row;
-		std::cout << "Please insert board length: "; std::cin >> m_column;
+		std::cout << "Please insert board height: "; std::cin >> this->input_mRowsFromUser;
+		std::cout << "Please insert board length: "; std::cin >> this->input_mColumnsFromUser;
 
-		if (m_row >= maxRows+1 || m_column >= maxColumns+1 || m_row < minRows-1 || m_column <= minColumns-1)
+		if (input_mRowsFromUser >= msMaxRows + 1 || input_mColumnsFromUser >= msMaxColumns + 1 || input_mRowsFromUser < mMinRows - 1 || input_mColumnsFromUser <= mMinColumns - 1)
 		{
-			std::cout << "\nSorry, but your numbers are not valid ( minim : "<< minRows << " and max : " << maxRows << "). Please insert again.\n\n";
+			std::cout << "\nSorry, but your numbers are not valid ( minim : " << mMinRows << " and max : " << msMaxRows << "). Please insert again.\n\n";
 			system("pause");
 			system("cls");
 		}
 		else passedNumbers = true;
 	}
 
-	// ==== Delete User Board Customization ====
-	system("cls");
+}
 
-	// ===== Create the Board Limits ========
-	int m_boardLimitRight = 0;
-	int m_boardLimitLeft = m_column - 1;
-	int m_boardLimitBottom = m_row - 1;
+void Board::setTheBoardLimits()
+{
+	
+
+	// ==== Delete User Board Customization ====
+
+	system("cls");
 
 
 	// ===== Set the Board Limits ========
-	for (int row = 0; row < m_row; row++)
+	for (int row = 1; row <= input_mRowsFromUser; row++)
 	{
-		for (int column = 0; column < m_column; column++)
+		for (int column = 1; column <= input_mColumnsFromUser; column++)
 		{
-			if (column == m_boardLimitRight)									{ mBoard[row][column] = '#'; } // Set the right border
+			if (column == mBoardLimitRight) { mBoard[row][column] = '#'; } // Set the right border
 
-			if (column == m_boardLimitLeft)										{ mBoard[row][column] = '#'; } // Set the left border
+			if (column == *pmBoardLimitLeft) { mBoard[row][column] = '#'; } // Set the left border
 
-			if (column != m_boardLimitRight && column != m_boardLimitLeft)		{ mBoard[row][column] = ' '; } // Set the blank spaces
+			if (column != mBoardLimitRight && column != *pmBoardLimitLeft) { mBoard[row][column] = ' '; } // Set the blank spaces
 
-			if (row == m_boardLimitBottom)										{ mBoard[row][column] = '#'; } // Set the bottom border
+			if (row == *pmBoardLimitBottom) { mBoard[row][column] = '#'; } // Set the bottom border
 		}
 	}
 
+
+
 	// ===== Print the Board Limits ========
-	for (int row = 0; row < m_row; row++)
+	for (int row = 1; row <= input_mRowsFromUser; row++)
 	{
-		for (int column = 0; column < m_column; column++)
+		for (int column = 1; column <= input_mColumnsFromUser; column++)
 		{
 			std::cout << mBoard[row][column];
 
@@ -86,12 +94,13 @@ void Board::initBoard()
 	}
 
 	// ===== Show current Board Settings =====
-	std::cout << "\n\nHeight: "<< m_row << " ; " << "Length: " << m_column << "" << "\n\n";
+	std::cout << "\n\nHeight: " << input_mRowsFromUser << " ; " << "Length: " << input_mColumnsFromUser << "" << "\n";
+	std::cout << "\n\nBoard Limit Right: " << mBoardLimitRight << " ; " << "Board Limit Left: " 
+		<< *pmBoardLimitLeft << " ; "<< "Board Limit Bottom: " << *pmBoardLimitBottom <<  "\n\n";
 
 	// ====== Debugging ========
 	system("pause");
 	system("cls");
-	
+
 
 }
-
