@@ -15,6 +15,7 @@ const int k_BoardLineWidth = 6;
 #define PIECE_BLOCKS 5				// Number of horizontal and vertical blocks of a matrix piece
 
 #include<fstream>
+#include<iostream>
 
 
 class Board
@@ -36,7 +37,7 @@ private:
 
 	char mBoard[msMaxRows][msMaxColumns];	// CHAR - Creates the board
 
-	std::ifstream mShape1;
+	std::ifstream mShape1; char mShape1Piece[4][4];
 	std::ifstream mShape2;
 	std::ifstream mShape3;
 	std::ifstream mShape4;
