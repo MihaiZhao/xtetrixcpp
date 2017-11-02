@@ -9,14 +9,15 @@ Board::Board()
 {
 	// Board Settings
 
-	this->mMinRows = 10;
-	this->mMinColumns = 10;
-	this->input_mColumnsFromUser;
-	this->input_mRowsFromUser;
+	this->mMinRows = 10;				// INT - Set minimum numbers of rows
+	this->mMinColumns = 10;				// INT - Set minimum numbers of rows
 
-	this->mBoardLimitRight = 1;
-	this->pmBoardLimitLeft = &input_mColumnsFromUser;
-	this->pmBoardLimitBottom = &input_mRowsFromUser;
+	this->input_mColumnsFromUser;		// INT - Get numbers of columns from user
+	this->input_mRowsFromUser;			// INT - Get numbers of rows from user
+
+	this->mBoardLimitRight = 1;								// INT - Set right border
+	this->pmBoardLimitLeft = &input_mColumnsFromUser;		// INT Pointer - Set left border 
+	this->pmBoardLimitBottom = &input_mRowsFromUser;		// INT Pointer - Set bottom border
 
 }
 
@@ -26,7 +27,7 @@ Board::~Board()
 
 void Board::initBoard()
 {
-	system("cls");
+	CLEARSCREEN;
 
 	getRowsAndColumnsFromUser();
 
@@ -50,7 +51,7 @@ void Board::getRowsAndColumnsFromUser()
 		{
 			std::cout << "\nSorry, but your numbers are not valid ( minim : " << mMinRows << " and max : " << msMaxRows << "). Please insert again.\n\n";
 			system("pause");
-			system("cls");
+			CLEARSCREEN;
 		}
 		else passedNumbers = true;
 	}
@@ -63,7 +64,7 @@ void Board::setTheBoardLimits()
 
 	// ==== Delete User Board Customization ====
 
-	system("cls");
+	CLEARSCREEN;
 
 
 	// ===== Set the Board Limits ========
@@ -101,7 +102,7 @@ void Board::setTheBoardLimits()
 
 	// ====== Debugging ========
 	system("pause");
-	system("cls");
+	CLEARSCREEN;
 
 
 }

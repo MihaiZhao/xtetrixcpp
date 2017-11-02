@@ -5,6 +5,8 @@
 #include<iostream>
 
 
+#define CLEARSCREEN system("cls");
+
 class Board
 {
 private:
@@ -35,9 +37,10 @@ public:
 	void setTheBoardLimits();					// Sets the board borders
 
 	// Accessors
-	inline int getBoardLimitRight() const	{ return this->mBoardLimitRight; }
-	inline int getBoardLimitLeft() const	{ return *pmBoardLimitLeft; }
-	inline int getBoardLimiBottom() const	{ return *pmBoardLimitBottom; }
+	inline int getBoardLimitRight() const		{ return this->mBoardLimitRight; }		// Get right border
+	inline int getBoardLimitLeft() const		{ return *pmBoardLimitLeft; }			// Get left border	
+	inline int getBoardLimiBottom() const		{ return *pmBoardLimitBottom; }			// Get bottom border
+	inline int getBoard(int row, int column)	{ return this->mBoard[row][column]; }	// Get board row and columns
 
 
 };

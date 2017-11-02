@@ -1,6 +1,7 @@
 #include "inGame.h"
 #include "Tetriminos.h"
 #include "Board.h"
+#include <windows.h>
 
 
 
@@ -22,8 +23,9 @@ void inGame::StartGame()
 	board.initBoard();				// init the Board
 
 	tetriminos.initTetriminos();	// init the Tetriminos
+
 	
-	system("cls");
+	
 }
 
 	// ====== Create a New Tetrimino =======

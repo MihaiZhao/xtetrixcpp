@@ -19,6 +19,7 @@ void Tetriminos::initTetriminos()
 	getShape5(); std::cout << std::endl;	// Load Shape 5
 	getShape6(); std::cout << std::endl;	// Load Shape 6
 	getShape7(); std::cout << std::endl;	// Load Shape 7
+	CLEARSCREEN;
 }	
 
 void Tetriminos::getShape1()
@@ -53,6 +54,8 @@ void Tetriminos::getShape1()
 
 	mShape1.close();
 
+#pragma region Printing the shape
+
 	std::cout << "Shape 1 Loaded: \n";
 
 	for (int row = 0; row < 4; row++)
@@ -64,9 +67,10 @@ void Tetriminos::getShape1()
 		std::cout << "\n";
 	}
 
+#pragma endregion
 
-
-	system("pause");
+	PAUSE;
+	
 
 }
 void Tetriminos::getShape2()
@@ -101,6 +105,9 @@ void Tetriminos::getShape2()
 
 	mShape2.close();
 
+#pragma region Printing the shape
+
+
 	std::cout << "Shape 2 Loaded: \n";
 
 	for (int row = 0; row < 4; row++)
@@ -113,9 +120,11 @@ void Tetriminos::getShape2()
 		std::cout << "\n";
 	}
 
-	system("pause");
+#pragma endregion
 
-	mShape2.close();
+
+	PAUSE;
+
 
 }
 void Tetriminos::getShape3()
@@ -151,6 +160,9 @@ void Tetriminos::getShape3()
 
 	mShape3.close();
 
+#pragma region Printing the shape
+
+
 	std::cout << "Shape 3 Loaded: \n";
 
 	for (int row = 0; row < 4; row++)
@@ -163,7 +175,10 @@ void Tetriminos::getShape3()
 		std::cout << "\n";
 	}
 
-	system("pause");
+#pragma endregion
+
+
+	PAUSE;
 
 }
 void Tetriminos::getShape4()
@@ -199,6 +214,9 @@ void Tetriminos::getShape4()
 
 	mShape4.close();
 
+#pragma region Printing the shape
+
+
 	std::cout << "Shape 4 Loaded: \n";
 
 	for (int row = 0 ; row < 4; row++)
@@ -210,6 +228,9 @@ void Tetriminos::getShape4()
 		}
 		std::cout << "\n";
 	}
+
+#pragma endregion
+
 
 	system("pause");
 
@@ -247,6 +268,9 @@ void Tetriminos::getShape5()
 
 	mShape5.close();
 
+#pragma region Printing the shape
+
+
 	std::cout << "Shape 5 Loaded: \n";
 
 	for (int row = 0; row < 4; row++)
@@ -258,6 +282,9 @@ void Tetriminos::getShape5()
 		}
 		std::cout << "\n";
 	}
+
+#pragma endregion
+
 
 	system("pause");
 
@@ -295,6 +322,9 @@ void Tetriminos::getShape6()
 
 	mShape6.close();
 
+#pragma region Printing the shape
+
+
 	std::cout << "Shape 6 Loaded: \n";
 
 	for (int row = 0; row < 4; row++)
@@ -306,6 +336,9 @@ void Tetriminos::getShape6()
 		}
 		std::cout << "\n";
 	}
+
+#pragma endregion
+
 
 	system("pause");
 
@@ -345,6 +378,9 @@ void Tetriminos::getShape7()
 
 	std::cout << "Shape 7 Loaded: \n";
 
+#pragma region Printing the shape
+
+
 	for (int row = 0; row < 4; row++)
 	{
 		for (int column = 0; column < 4; column++)
@@ -354,6 +390,9 @@ void Tetriminos::getShape7()
 		}
 		std::cout << "\n";
 	}
+
+#pragma endregion
+
 
 	system("pause");
 
