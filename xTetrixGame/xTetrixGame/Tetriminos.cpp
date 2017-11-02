@@ -12,13 +12,13 @@ Tetriminos::~Tetriminos()
 
 void Tetriminos::initTetriminos()
 {
-	getShape1(); std::cout << std::endl;
-	getShape2(); std::cout << std::endl;
-	getShape3(); std::cout << std::endl;
-	getShape4(); std::cout << std::endl;
-	getShape5(); std::cout << std::endl;
-	getShape6(); std::cout << std::endl;
-	getShape7(); std::cout << std::endl;
+	getShape1(); std::cout << std::endl;	// Load Shape 1
+	getShape2(); std::cout << std::endl;	// Load Shape 2
+	getShape3(); std::cout << std::endl;	// Load Shape 3
+	getShape4(); std::cout << std::endl;	// Load Shape 4
+	getShape5(); std::cout << std::endl;	// Load Shape 5
+	getShape6(); std::cout << std::endl;	// Load Shape 6
+	getShape7(); std::cout << std::endl;	// Load Shape 7
 }	
 
 void Tetriminos::getShape1()
