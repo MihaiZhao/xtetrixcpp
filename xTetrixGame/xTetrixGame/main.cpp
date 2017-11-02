@@ -1,4 +1,6 @@
 #include "Menu.h"
+#include "Board.h"
+#include "Tetriminos.h"
 #include "Functions.h"
 
 

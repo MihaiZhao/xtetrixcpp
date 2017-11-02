@@ -32,7 +32,6 @@ void Board::initBoard()
 
 	setTheBoardLimits();
 
-	getShapesFromFiles();
 
 }
 
@@ -107,51 +106,3 @@ void Board::setTheBoardLimits()
 
 }
 
-void Board::getShapesFromFiles() 
-{
-
-
-	mShape1.open("Shapes\\Shape1.txt");
-
-	if (!mShape1) {
-		std::cerr << "Unable to open file Shape1.txt";
-		exit(1);   // call system to stop
-	}
-
-		for (int i=0 ; i<4 ; i++)
-		{
-			for (int j = 0; j< 4; j++)
-			{
-				char currentChar;
-
-				mShape1 >> currentChar;
-
-				if (currentChar == '.')
-				{
-					mShape1Piece[i][j] = ' ';
-				}
-				if (currentChar == 'x')
-				{
-					mShape1Piece[i][j] = 'x';
-				}
-			}
-		}
-
-
-	mShape1.close();
-
-	for (int row = 1; row <= 4; row++)
-	{
-		for (int column = 1; column <= 4; column++)
-		{
-			std::cout << mShape1Piece[row][column];
-
-		}
-		std::cout << "\n";
-
-		
-	}
-
-	system("pause");
-
-}

@@ -1,9 +1,12 @@
 #include "inGame.h"
+#include "Tetriminos.h"
+#include "Board.h"
 
 
 
 inGame::inGame()
 {
+
 }
 
 
@@ -15,9 +18,12 @@ void inGame::StartGame()
 {
 	// ====== Create a New Board =======
 
-	Board board;
+
 	board.initBoard(); // init the Board
 
+	tetriminos.initTetriminos();
+	
+	system("cls");
 }
 
 	// ====== Create a New Tetrimino =======
@@ -27,7 +33,6 @@ void inGame::StartGame()
 
 
 	// Initializes the position
-
 
 	// ====== Game functions =======
 

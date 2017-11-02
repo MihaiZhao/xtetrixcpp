@@ -4,230 +4,359 @@
 
 // ========= Tetriminos =========
 
-// Pieces definition
-char mPieces[7 /*kind = 7 Tetriminos*/]
-			[4 /* rotation = 4 Different Rotations*/]
-			[5 /* horizontal blocks */]
-			[5 /* vertical blocks */] =
+Tetriminos::Tetriminos()
+{}
+
+Tetriminos::~Tetriminos()
+{}
+
+void Tetriminos::initTetriminos()
 {
-	// Square
-	{
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },              //    0 O
-			{ 0, 0, 2, 1, 0 },				//    O O
-			{ 0, 0, 1, 1, 0 },
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },              //    0 O
-			{ 0, 0, 2, 1, 0 },				//    O O
-			{ 0, 0, 1, 1, 0 },
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },              //    0 O
-			{ 0, 0, 2, 1, 0 },              //    O O
-			{ 0, 0, 1, 1, 0 },
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },              //    0 O
-			{ 0, 0, 2, 1, 0 },              //    O O
-			{ 0, 0, 1, 1, 0 },
-			{ 0, 0, 0, 0, 0 }
-		}
-	},
+	getShape1(); std::cout << std::endl;
+	getShape2(); std::cout << std::endl;
+	getShape3(); std::cout << std::endl;
+	getShape4(); std::cout << std::endl;
+	getShape5(); std::cout << std::endl;
+	getShape6(); std::cout << std::endl;
+	getShape7(); std::cout << std::endl;
+}	
 
-	// I
+void Tetriminos::getShape1()
+{
+	std::ifstream mShape1;
+
+	mShape1.open("Shapes/Shape1.txt", std::fstream::in);
+
+	if (!mShape1.is_open()) {
+		std::cerr << "Unable to open file Shape1.txt";
+		exit(1);   // call system to stop
+	}
+
+	for (int i = 0; i < 4; i++)
 	{
+		for (int j = 0; j < 4; j++)
 		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },              //    O 0 O O
-			{ 0, 1, 2, 1, 1 },
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 1, 0, 0 },              //    O
-			{ 0, 0, 2, 0, 0 },              //    0
-			{ 0, 0, 1, 0, 0 },              //    O
-			{ 0, 0, 1, 0, 0 }               //    O
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },              //    O O 0 O
-			{ 1, 1, 2, 1, 0 },
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 1, 0, 0 },
-			{ 0, 0, 1, 0, 0 },              //    O
-			{ 0, 0, 2, 0, 0 },              //    O
-			{ 0, 0, 1, 0, 0 },              //    0
-			{ 0, 0, 0, 0, 0 }               //    O
+			char currentChar;
+
+			mShape1 >> currentChar;
+
+			if (currentChar == '.')
+			{
+				mShape1Piece[i][j] = ' ';
+			}
+			if (currentChar == 'x')
+			{
+				mShape1Piece[i][j] = 'x';
+			}
 		}
 	}
-	,
-	// L
+
+	mShape1.close();
+
+	std::cout << "Shape 1 Loaded: \n";
+
+	for (int row = 0; row < 4; row++)
 	{
+		for (int column = 0; column < 4; column++)
 		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 1, 0, 0 },              //    O
-			{ 0, 0, 2, 0, 0 },              //    0
-			{ 0, 0, 1, 1, 0 },              //    O O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },              //    O 0 O
-			{ 0, 1, 2, 1, 0 },              //    O
-			{ 0, 1, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 1, 1, 0, 0 },              //    O O
-			{ 0, 0, 2, 0, 0 },              //    0
-			{ 0, 0, 1, 0, 0 },              //    O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 1, 0 },              //        O
-			{ 0, 1, 2, 1, 0 },              //    O 0 O
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }
+			std::cout << mShape1Piece[row][column];
 		}
-	},
-	// L mirrored
+		std::cout << "\n";
+	}
+
+
+
+	system("pause");
+
+}
+void Tetriminos::getShape2()
+{
+	std::ifstream mShape2;
+	mShape2.open("Shapes\\Shape2.txt");
+
+	if (!mShape2) {
+		std::cerr << "Unable to open file Shape2.txt";
+		exit(1);   // call system to stop
+	}
+
+	for (int i = 0; i < 4; i++)
 	{
+		for (int j = 0; j < 4; j++)
 		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 1, 0, 0 },              //        O
-			{ 0, 0, 2, 0, 0 },              //        0
-			{ 0, 1, 1, 0, 0 },              //      O O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 1, 0, 0, 0 },              //        O
-			{ 0, 1, 2, 1, 0 },              //        O 0 O
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 1, 1, 0 },              //        O O
-			{ 0, 0, 2, 0, 0 },              //        0
-			{ 0, 0, 1, 0, 0 },              //        O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 1, 2, 1, 0 },              //        O 0 O
-			{ 0, 0, 0, 1, 0 },              //            O
-			{ 0, 0, 0, 0, 0 }
-		}
-	},
-	// N
-	{
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 1, 0 },              //        O
-			{ 0, 0, 2, 1, 0 },              //      0 O
-			{ 0, 0, 1, 0, 0 },              //      O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 1, 2, 0, 0 },              //        O 0
-			{ 0, 0, 1, 1, 0 },              //          O O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 1, 0, 0 },
-			{ 0, 1, 2, 0, 0 },
-			{ 0, 1, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 1, 1, 0, 0 },              //        O O
-			{ 0, 0, 2, 1, 0 },              //          0 O
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }
-		}
-	},
-	// N mirrored
-	{
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 1, 0, 0 },              //        O
-			{ 0, 0, 2, 1, 0 },              //        0 O
-			{ 0, 0, 0, 1, 0 },              //          O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 2, 1, 0 },              //        0 O
-			{ 0, 1, 1, 0, 0 },              //      O O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 1, 0, 0, 0 },              //        O
-			{ 0, 1, 2, 0, 0 },              //        O 0
-			{ 0, 0, 1, 0, 0 },              //          O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 1, 1, 0 },              //        O O
-			{ 0, 1, 2, 0, 0 },              //      O 0
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }
-		}
-	},
-	// T
-	{
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 1, 0, 0 },              //        O
-			{ 0, 0, 2, 1, 0 },              //        0 O
- 			{ 0, 0, 1, 0, 0 },              //        O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 1, 2, 1, 0 },              //        O 0 O
-			{ 0, 0, 1, 0, 0 },              //          O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 1, 0, 0 },              //        O
-			{ 0, 1, 2, 0, 0 },              //      O 0
-			{ 0, 0, 1, 0, 0 },              //        O
-			{ 0, 0, 0, 0, 0 }
-		},
-		{
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 1, 0, 0 },              //        O
-			{ 0, 1, 2, 1, 0 },              //      O 0 O
-			{ 0, 0, 0, 0, 0 },
-			{ 0, 0, 0, 0, 0 }
+			char currentChar2;
+
+			mShape2 >> currentChar2;
+
+			if (currentChar2 == '.')
+			{
+				mShape2Piece[i][j] = ' ';
+			}
+			if (currentChar2 == 'x')
+			{
+				mShape2Piece[i][j] = 'x';
+			}
 		}
 	}
-};
 
+
+	mShape2.close();
+
+	std::cout << "Shape 2 Loaded: \n";
+
+	for (int row = 0; row < 4; row++)
+	{
+		for (int column = 0; column < 4; column++)
+		{
+			std::cout << mShape2Piece[row][column];
+
+		}
+		std::cout << "\n";
+	}
+
+	system("pause");
+
+	mShape2.close();
+
+}
+void Tetriminos::getShape3()
+{
+	std::ifstream mShape3;
+
+	mShape3.open("Shapes\\Shape3.txt");
+
+	if (!mShape3) {
+		std::cerr << "Unable to open file Shape3.txt";
+		exit(1);   // call system to stop
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			char currentChar;
+
+			mShape3 >> currentChar;
+
+			if (currentChar == '.')
+			{
+				mShape3Piece[i][j] = ' ';
+			}
+			if (currentChar == 'x')
+			{
+				mShape3Piece[i][j] = 'x';
+			}
+		}
+	}
+
+
+	mShape3.close();
+
+	std::cout << "Shape 3 Loaded: \n";
+
+	for (int row = 0; row < 4; row++)
+	{
+		for (int column = 0 ; column < 4; column++)
+		{
+			std::cout << mShape3Piece[row][column];
+
+		}
+		std::cout << "\n";
+	}
+
+	system("pause");
+
+}
+void Tetriminos::getShape4()
+{
+	std::ifstream mShape4;
+
+	mShape4.open("Shapes\\Shape4.txt");
+
+	if (!mShape4) {
+		std::cerr << "Unable to open file Shape4.txt";
+		exit(1);   // call system to stop
+	}
+
+	for (int i = 0 ; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			char currentChar;
+
+			mShape4 >> currentChar;
+
+			if (currentChar == '.')
+			{
+				mShape4Piece[i][j] = ' ';
+			}
+			if (currentChar == 'x')
+			{
+				mShape4Piece[i][j] = 'x';
+			}
+		}
+	}
+
+
+	mShape4.close();
+
+	std::cout << "Shape 4 Loaded: \n";
+
+	for (int row = 0 ; row < 4; row++)
+	{
+		for (int column = 0; column < 4; column++)
+		{
+			std::cout << mShape4Piece[row][column];
+
+		}
+		std::cout << "\n";
+	}
+
+	system("pause");
+
+}
+void Tetriminos::getShape5()
+{
+	std::ifstream mShape5;
+
+	mShape5.open("Shapes\\Shape5.txt");
+
+	if (!mShape5) {
+		std::cerr << "Unable to open file Shape5.txt";
+		exit(1);   // call system to stop
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			char currentChar;
+
+			mShape5 >> currentChar;
+
+			if (currentChar == '.')
+			{
+				mShape5Piece[i][j] = ' ';
+			}
+			if (currentChar == 'x')
+			{
+				mShape5Piece[i][j] = 'x';
+			}
+		}
+	}
+
+
+	mShape5.close();
+
+	std::cout << "Shape 5 Loaded: \n";
+
+	for (int row = 0; row < 4; row++)
+	{
+		for (int column = 0; column < 4; column++)
+		{
+			std::cout << mShape5Piece[row][column];
+
+		}
+		std::cout << "\n";
+	}
+
+	system("pause");
+
+}
+void Tetriminos::getShape6()
+{
+	std::ifstream mShape6;
+
+	mShape6.open("Shapes\\Shape6.txt");
+
+	if (!mShape6) {
+		std::cerr << "Unable to open file Shape6.txt";
+		exit(1);   // call system to stop
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			char currentChar;
+
+			mShape6 >> currentChar;
+
+			if (currentChar == '.')
+			{
+				mShape6Piece[i][j] = ' ';
+			}
+			if (currentChar == 'x')
+			{
+				mShape6Piece[i][j] = 'x';
+			}
+		}
+	}
+
+
+	mShape6.close();
+
+	std::cout << "Shape 6 Loaded: \n";
+
+	for (int row = 0; row < 4; row++)
+	{
+		for (int column = 0; column < 4; column++)
+		{
+			std::cout << mShape6Piece[row][column];
+
+		}
+		std::cout << "\n";
+	}
+
+	system("pause");
+
+}
+void Tetriminos::getShape7()
+{
+	std::ifstream mShape7;
+
+	mShape7.open("Shapes\\Shape7.txt");
+
+	if (!mShape7) {
+		std::cerr << "Unable to open file Shape7.txt";
+		exit(1);   // call system to stop
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			char currentChar;
+
+			mShape7 >> currentChar;
+
+			if (currentChar == '.')
+			{
+				mShape7Piece[i][j] = ' ';
+			}
+			if (currentChar == 'x')
+			{
+				mShape7Piece[i][j] = 'x';
+			}
+		}
+	}
+
+
+	mShape7.close();
+
+	std::cout << "Shape 7 Loaded: \n";
+
+	for (int row = 0; row < 4; row++)
+	{
+		for (int column = 0; column < 4; column++)
+		{
+			std::cout << mShape7Piece[row][column];
+
+		}
+		std::cout << "\n";
+	}
+
+	system("pause");
+
+	mShape7.close();
+
+}

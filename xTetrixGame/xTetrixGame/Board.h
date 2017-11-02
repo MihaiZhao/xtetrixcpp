@@ -14,7 +14,6 @@ const int k_BoardLineWidth = 6;
 #define MIN_HORIZONTAL_MARGIN 20	// Minimum horizontal margin for the board limit
 #define PIECE_BLOCKS 5				// Number of horizontal and vertical blocks of a matrix piece
 
-#include<fstream>
 #include<iostream>
 
 
@@ -37,14 +36,6 @@ private:
 
 	char mBoard[msMaxRows][msMaxColumns];	// CHAR - Creates the board
 
-	std::ifstream mShape1; char mShape1Piece[4][4];
-	std::ifstream mShape2;
-	std::ifstream mShape3;
-	std::ifstream mShape4;
-	std::ifstream mShape5;
-	std::ifstream mShape6;
-	std::ifstream mShape7;
-
 
 public:
 	Board();									// Constructor
@@ -54,7 +45,12 @@ public:
 	void initBoard();							// Initialize the board
 	void getRowsAndColumnsFromUser();			// Gets the rows and columns from the user input
 	void setTheBoardLimits();					// Sets the board borders
-	void getShapesFromFiles();
+
+	// Accessors
+	inline int getBoardLimitRight() const { return this->mBoardLimitRight; }
+	inline int getBoardLimitLeft() const { return *pmBoardLimitLeft; }
+	inline int getBoardLimiBottom() const { return *pmBoardLimitBottom; }
+
 
 };
 
