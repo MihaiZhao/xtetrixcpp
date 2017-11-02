@@ -19,9 +19,9 @@ void inGame::StartGame()
 	// ====== Create a New Board =======
 
 
-	board.initBoard(); // init the Board
+	board.initBoard();				// init the Board
 
-	tetriminos.initTetriminos();
+	tetriminos.initTetriminos();	// init the Tetriminos
 	
 	system("cls");
 }

@@ -71,13 +71,13 @@ void Board::setTheBoardLimits()
 	{
 		for (int column = 1; column <= input_mColumnsFromUser; column++)
 		{
-			if (column == mBoardLimitRight) { mBoard[row][column] = '#'; } // Set the right border
+			if ( column == getBoardLimitRight() ) { mBoard[row][column] = '#'; } // Set the right border
 
-			if (column == *pmBoardLimitLeft) { mBoard[row][column] = '#'; } // Set the left border
+			if ( column == getBoardLimitLeft() ) { mBoard[row][column] = '#'; } // Set the left border
 
-			if (column != mBoardLimitRight && column != *pmBoardLimitLeft) { mBoard[row][column] = ' '; } // Set the blank spaces
+			if ( column != getBoardLimitRight() && column != getBoardLimitLeft() ) { mBoard[row][column] = ' '; } // Set the blank spaces
 
-			if (row == *pmBoardLimitBottom) { mBoard[row][column] = '#'; } // Set the bottom border
+			if ( row == getBoardLimiBottom() ) { mBoard[row][column] = '#'; } // Set the bottom border
 		}
 	}
 
