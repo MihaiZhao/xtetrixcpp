@@ -1,17 +1,20 @@
 #pragma once
 #ifndef _BOARD_
 
-
+// ==== LIBRARIES =====
 #include<iostream>
 
 
+// ==== DEFINES =====
 #define CLEARSCREEN system("cls");
+
 
 class Board
 {
 private:
-	static int const msMaxRows = 100;		// Static INT - Max numbers of rows
-	static int const msMaxColumns = 100;	// Static INT - Max numbers of columns
+	static int const ms_maxRows = 100;		// Static INT - Max numbers of rows
+	static int const ms_maxColumns = 100;	// Static INT - Max numbers of columns
+
 
 	int mMinRows;							// INT - Min numbers of rows
 	int mMinColumns;						// INT - Min numbers of columns
@@ -20,11 +23,11 @@ private:
 	int input_mColumnsFromUser;				// INT - Input from user for columns
 
 	int mBoardLimitRight;					// INT - Right Board
-	int *pmBoardLimitLeft;					// INT Pointer * - Left Board
+	int *pmBoardLimitLeft;					// INT Pointer * - Left Board // Left Limit
 	int *pmBoardLimitBottom;				// INT pointer * - Bottom Board
 
 
-	char mBoard[msMaxRows][msMaxColumns];	// CHAR - Creates the board
+	char mBoard[ms_maxRows][ms_maxColumns];	// CHAR - Creates the board
 
 
 public:
@@ -41,7 +44,6 @@ public:
 	inline int getBoardLimitLeft() const		{ return *pmBoardLimitLeft; }			// Get left border	
 	inline int getBoardLimiBottom() const		{ return *pmBoardLimitBottom; }			// Get bottom border
 	inline int getBoard(int row, int column)	{ return this->mBoard[row][column]; }	// Get board row and columns
-
 
 };
 

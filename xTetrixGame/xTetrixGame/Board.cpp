@@ -37,7 +37,8 @@ void Board::initBoard()
 }
 
 void Board::getRowsAndColumnsFromUser()
-{
+{ 
+
 	bool passedNumbers = false;		// Variable that checks
 
 									// Check if numbers are valid
@@ -47,9 +48,9 @@ void Board::getRowsAndColumnsFromUser()
 		std::cout << "Please insert board height: "; std::cin >> this->input_mRowsFromUser;
 		std::cout << "Please insert board length: "; std::cin >> this->input_mColumnsFromUser;
 
-		if (input_mRowsFromUser >= msMaxRows + 1 || input_mColumnsFromUser >= msMaxColumns + 1 || input_mRowsFromUser < mMinRows - 1 || input_mColumnsFromUser <= mMinColumns - 1)
+		if (input_mRowsFromUser >= ms_maxRows + 1 || input_mColumnsFromUser >= ms_maxColumns + 1 || input_mRowsFromUser < mMinRows - 1 || input_mColumnsFromUser <= mMinColumns - 1)
 		{
-			std::cout << "\nSorry, but your numbers are not valid ( minim : " << mMinRows << " and max : " << msMaxRows << "). Please insert again.\n\n";
+			std::cout << "\nSorry, but your numbers are not valid ( minim : " << mMinRows << " and max : " << ms_maxRows << "). Please insert again.\n\n";
 			system("pause");
 			CLEARSCREEN;
 		}
