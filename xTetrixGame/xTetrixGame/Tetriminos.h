@@ -1,11 +1,33 @@
 #ifndef _Tetriminos_
 #define _Tetriminos_
 
-#include <fstream>
-#include <iostream>
 
 #define PAUSE system("pause")
 #define CLEARSCREEN system("cls")
+
+#include <fstream>
+#include <stdlib.h>
+#include <iostream>
+#include <string>
+#include <vector>
+
+int const k_X = 0;
+int const k_Y = 1;
+
+int const k_rows = 5;
+int const k_columns = 5;
+
+int const k_squarePiece = 0;
+int const k_IPiece = 1;
+int const k_LPiece = 2;
+int const k_LMirroredPiece = 3;
+int const k_NPiece = 4;
+int const k_NMirroredPiece = 5;
+int const k_TPiece = 6;
+
+int const k_XAndYPosArraySize = 8;
+
+
 
 
 // --------------------------------------------------------------------------------
@@ -15,31 +37,32 @@
 class Tetriminos
 {
 private:
-
-
-
+	
 public:
 	Tetriminos();
 	~Tetriminos();
 
-	char mShape1Piece[4][4];
-	char mShape2Piece[4][4];
-	char mShape3Piece[4][4];
-	char mShape4Piece[4][4];
-	char mShape5Piece[4][4];
-	char mShape6Piece[4][4];
-	char mShape7Piece[4][4];
+	char m_Pieces[7][4][5][5];
+
+	int squareCellsPositions[k_XAndYPosArraySize];
+	int ICellsPositions[k_XAndYPosArraySize];
+	int LCellsPositions[k_XAndYPosArraySize];
+	int LMirroredCellPositions[k_XAndYPosArraySize];
+	int NCellsPositions[k_XAndYPosArraySize];
+	int NMirroredCellsPositions[k_XAndYPosArraySize];
+	int TCellsPositions[k_XAndYPosArraySize];
 
 
 	// Functions 
 	void initTetriminos();
-	void getShape1();
-	void getShape2();
-	void getShape3();
-	void getShape4();
-	void getShape5();
-	void getShape6();
-	void getShape7();
+
+	void readPieceFromFile
+	(
+		std::string fileName	/*	File name		*/,
+		int p_Piece				/*	Piece 			*/,
+		int p_Rotation			/*	Piece Rotation	*/,
+		int p_XAndYPosList[]	/*	Piece Rotation	*/
+	);
 	
 };
 

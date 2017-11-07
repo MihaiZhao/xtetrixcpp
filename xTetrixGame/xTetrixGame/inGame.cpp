@@ -18,11 +18,10 @@ inGame::~inGame()
 void inGame::StartGame()
 {
 	// ====== Create a New Board =======
+	board.initBoard();
 
-
-	board.initBoard();				// init the Board
-
-	tetriminos.initTetriminos();	// init the Tetriminos
+	tetriminos.initTetriminos();
+	
 
 	
 	

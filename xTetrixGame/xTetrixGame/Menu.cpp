@@ -59,6 +59,7 @@ void Menu::mainMenu()
 
 	choice = _getch() - '0';  // Get User input
 
+	
 	inGame game;
 
 	switch (choice)
@@ -66,8 +67,8 @@ void Menu::mainMenu()
 	case 1:		// Play game
 #pragma region Game Code
 				// -- Play Game Code --
-
-		game.StartGame(); // Starts the game
+		
+		game.StartGame();
 
 
 #pragma endregion
